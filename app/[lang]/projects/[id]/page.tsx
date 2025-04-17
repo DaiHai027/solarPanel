@@ -10,7 +10,7 @@ const getProjectData = (id: string, lang: string) => {
       {
         id: 1,
         title: "Residential Solar Installation",
-        location: "Sunshine City",
+        location: "Sunshine City", 
         year: "2023",
         category: "residential",
         description: "A 10kW solar system installation for a modern family home, providing 90% of their energy needs.",
@@ -36,7 +36,7 @@ const getProjectData = (id: string, lang: string) => {
         id: 2,
         title: "Commercial Solar Farm",
         location: "Green Valley",
-        year: "2022",
+        year: "2022", 
         category: "commercial",
         description:
           "A 500kW commercial installation for a manufacturing facility, reducing their carbon footprint by 60%.",
@@ -63,7 +63,7 @@ const getProjectData = (id: string, lang: string) => {
         title: "Industrial Energy Solution",
         location: "Tech Park",
         year: "2023",
-        category: "commercial",
+        category: "commercial", 
         description: "An integrated solar and battery storage solution for a large industrial complex.",
         fullDescription: `
           This comprehensive energy solution for a large industrial complex in Tech Park combines a 750kW solar array with a 500kWh battery storage system. The installation provides both immediate energy production and critical backup power capabilities.
@@ -324,15 +324,14 @@ const getProjectData = (id: string, lang: string) => {
 }
 
 type ProjectDetailPageProps = {
-  params: { 
+  params: Promise<{ 
     lang: string; 
     id: string 
-  }
+  }>
 }
 
 export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
-  // Explicitly awaiting props.params
-  const params = await Promise.resolve(props.params);
+  const params = await props.params;
   const { lang, id } = params;
   const dictionary = await getDictionary(lang);
   const project = getProjectData(id, lang);

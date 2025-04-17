@@ -2,12 +2,11 @@ import { getDictionary } from "@/lib/dictionaries"
 import ContactPage from "@/components/contact-page"
 
 type ContactProps = {
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }
 
 export default async function Contact(props: ContactProps) {
-  // Explicitly awaiting props.params
-  const params = await Promise.resolve(props.params)
+  const params = await props.params
   const lang = params.lang
   const dictionary = await getDictionary(lang)
 

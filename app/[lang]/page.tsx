@@ -8,12 +8,11 @@ import Testimonials from "@/components/testimonials"
 import FeaturedProjects from "@/components/featured-projects"
 
 type HomeProps = {
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }
 
 export default async function Home(props: HomeProps) {
-  // Explicitly awaiting props.params
-  const params = await Promise.resolve(props.params)
+  const params = await props.params
   const lang = params.lang
   const dictionary = await getDictionary(lang)
 

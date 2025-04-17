@@ -1,13 +1,14 @@
 import { getDictionary } from "@/lib/dictionaries"
 import ProjectsGrid from "@/components/projects-grid"
 
-type ProjectsPageProps = {
-  params: { lang: string }
+type ProjectsPageProps =  {
+  params: Promise<{ 
+    lang: string; 
+  }>
 }
 
 export default async function ProjectsPage(props: ProjectsPageProps) {
-  // Explicitly awaiting props.params
-  const params = await Promise.resolve(props.params)
+  const params = await props.params
   const lang = params.lang
   const dictionary = await getDictionary(lang)
 
