@@ -18,7 +18,9 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
           href={`/en${pathnameWithoutLang === "/" ? "" : pathnameWithoutLang}`}
           locale="en"
           className={`px-3 py-1 text-sm transition-colors ${
-            currentLang === "en" ? "bg-yellow-500 text-white font-medium" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+            currentLang === "en" 
+              ? "bg-black text-white font-medium dark:bg-white dark:text-black" 
+              : "hover:bg-gray-100 dark:hover:bg-gray-800"
           }`}
         >
           EN
@@ -27,7 +29,9 @@ export default function LanguageSwitcher({ currentLang }: { currentLang: string 
           href={`/es${pathnameWithoutLang === "/" ? "" : pathnameWithoutLang}`}
           locale="es"
           className={`px-3 py-1 text-sm transition-colors ${
-            currentLang === "es" ? "bg-yellow-500 text-white font-medium" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+            currentLang === "es" 
+              ? "bg-black text-white font-medium dark:bg-white dark:text-black" 
+              : "hover:bg-gray-100 dark:hover:bg-gray-800"
           }`}
         >
           ES
