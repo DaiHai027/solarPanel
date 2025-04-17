@@ -18,6 +18,11 @@ interface AboutProps {
 }
 
 export default function About({ dictionary, lang }: AboutProps) {
+  // Translations object for UI elements not in the dictionary
+  const translations = {
+    ourValues: lang === "es" ? "Nuestros Valores" : "Our Values"
+  }
+
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
       <div className="container mx-auto px-4">
@@ -45,13 +50,13 @@ export default function About({ dictionary, lang }: AboutProps) {
             <p className="text-gray-700 dark:text-gray-300 mb-6">{dictionary.missionText}</p>
 
             <Link href={`/${lang}/about`}>
-              <Button className="bg-teal-600 hover:bg-teal-700 text-white">{dictionary.learnMoreButton}</Button>
+              <Button className="bg-black hover:bg-gray-800 text-white">{dictionary.learnMoreButton}</Button>
             </Link>
           </div>
         </div>
 
         <div className="mt-20">
-          <h3 className="text-2xl font-bold mb-8 text-center">Our Values</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center">{translations.ourValues}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {dictionary.values.map((value, index) => (
               <div
